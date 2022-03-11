@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SimonSays</string>
+    <string name="yellow">YELLOW</string>
+    <string name="start">START</string>
+    <string name="blue">BLUE</string>
+    <string name="red">RED</string>
+    <string name="gr">GREEN</string>
+    <string name="witamy_w_simon_says">Witamy w SImon Says</string>
 </resources>
