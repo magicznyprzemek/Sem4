@@ -1,4 +1,4 @@
-package com.example.sudokuapp;
+package com.example.sudokujava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
