@@ -7,8 +7,11 @@ import android.content.Context
 import android.media.MediaPlayer
 import android.widget.Button
 import android.widget.Toast
+import java.io.*
+import java.lang.Exception
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()
+{
     var Z = R.raw.sound1
     var A = R.raw.sounda
     var B = R.raw.soundb
@@ -18,35 +21,77 @@ class MainActivity : AppCompatActivity() {
 
     var btnArray: Array<Button?> = Array(6) { null }
     var saveList: MutableList<Int> = ArrayList()
+    var mp : MediaPlayer = MediaPlayer()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ArrayConnect(btnArray)
+        Write("ala")
+        Write("ma")
+        Write("kota")
+
+
     }
 
     fun ArrayConnect(tab: Array<Button?>) {
         for (i in 1 until 7) {
-            var ID = this.getResources().getIdentifier("button" + i, "id", this.getPackageName())
-            btnArray[i - 1] = findViewById(ID)
+            val ID = this.getResources().getIdentifier("button" + i, "id", this.getPackageName())
+            tab[i - 1] = findViewById(ID)
 
         }
     }
 
     fun PlaySound(context: Context, SoundID: Int) {
-        var mp = MediaPlayer.create(context, SoundID)
+       // mp.start()
+        mp=MediaPlayer.create(context, SoundID)
         mp.start()
     }
 
     fun showIds(v: View) {
         for (i in 0 until saveList.size) {
-            Toast.makeText(this, saveList[i].toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, saveList[i].toString(), Toast.LENGTH_SHORT).show()
         }
+    }
+    fun Read(v : View)
+    {
+        try
+        {
+            val FileIN : FileInputStream = openFileInput("dataFile.txt")
+            val InputRead : InputStreamReader = InputStreamReader(FileIN)
+            var text: String = ""
+            while(!text.isEmpty())
+            {
+                text = InputRead.readText()
+                Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+            }
+
+        }
+        catch (e: Exception)
+        {
+            throw e
+        }
+
+    }
+    fun Write(line :String)
+    {
+      try
+      {
+         var fileOut :FileOutputStream = openFileOutput("dataFile.txt", MODE_PRIVATE)
+          val out_writer: OutputStreamWriter = OutputStreamWriter(fileOut)
+          out_writer.write(line)
+          out_writer.close()
+
+      }
+      catch (e: Exception)
+      {
+          e.printStackTrace()
+      }
     }
 
     fun SoundButtons(v: View) {
-        var s: Int = when {
+        val s: Int = when {
             v.id == btnArray[0]?.id -> A
             v.id == btnArray[1]?.id -> B
             v.id == btnArray[2]?.id -> C
@@ -57,6 +102,5 @@ class MainActivity : AppCompatActivity() {
         }
         PlaySound(this, s)
         saveList.add(s)
-
     }
 }
