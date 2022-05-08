@@ -27,15 +27,15 @@ class MainActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        ArrayConnect(btnArray)
-        Write("ala")
-        Write("ma")
-        Write("kota")
+        arrayConnect(btnArray)
+        write("ala")
+        write("ma")
+        write("kota")
 
 
     }
 
-    fun ArrayConnect(tab: Array<Button?>) {
+    fun arrayConnect(tab: Array<Button?>) {
         for (i in 1 until 7) {
             val ID = this.getResources().getIdentifier("button" + i, "id", this.getPackageName())
             tab[i - 1] = findViewById(ID)
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity()
         }
     }
 
-    fun PlaySound(context: Context, SoundID: Int) {
+    fun playSound(context: Context, SoundID: Int) {
        // mp.start()
         mp=MediaPlayer.create(context, SoundID)
         mp.start()
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity()
             Toast.makeText(this, saveList[i].toString(), Toast.LENGTH_SHORT).show()
         }
     }
-    fun Read(v : View)
+    fun read(v : View)
     {
         try
         {
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity()
         }
 
     }
-    fun Write(line :String)
+    fun write(line :String)
     {
       try
       {
@@ -90,17 +90,17 @@ class MainActivity : AppCompatActivity()
       }
     }
 
-    fun SoundButtons(v: View) {
-        val s: Int = when {
-            v.id == btnArray[0]?.id -> A
-            v.id == btnArray[1]?.id -> B
-            v.id == btnArray[2]?.id -> C
-            v.id == btnArray[3]?.id -> D
-            v.id == btnArray[4]?.id -> E
-            v.id == btnArray[5]?.id -> Z
-            else -> 0
+    fun soundButtons(v: View) {
+        val s: Int = when (v.id) {
+            btnArray[0]?.id -> A
+            btnArray[1]?.id -> B
+            btnArray[2]?.id -> C
+            btnArray[3]?.id -> D
+            btnArray[4]?.id -> E
+            btnArray[5]?.id -> Z
+            else -> 0 // xd
         }
-        PlaySound(this, s)
+        playSound(this, s)
         saveList.add(s)
     }
 }
