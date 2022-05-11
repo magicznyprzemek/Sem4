@@ -11,9 +11,12 @@
         android:id="@+id/gridLayout2"
         android:layout_width="match_parent"
         android:layout_height="401dp"
-        android:layout_margin="10dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         app:columnCount="2"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:rowCount="3">
@@ -98,37 +101,61 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="73dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="176dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="183dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <Button
             android:id="@+id/RecordBtn"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="65dp"
             android:layout_gravity="center"
-            android:layout_margin="2dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/black"
             android:gravity="center"
+            android:onClick="starRecord"
             android:text="Nagrywanie" />
 
         <Button
             android:id="@+id/button14"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="65dp"
             android:layout_gravity="center"
-            android:layout_margin="2dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="showIds"
+            android:text="WYŚWIETLANIE" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout2"
+        app:layout_constraintVertical_bias="0.39">
+
+        <Button
+            android:id="@+id/history"
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:backgroundTint="@color/black"
             android:gravity="center"
             android:onClick="read"
-            android:text="Odtwarzanie" />
+            android:text="odtwórz zapisaną sekwencje" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
