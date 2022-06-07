@@ -4,6 +4,8 @@ import android.content.Context
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -94,6 +96,10 @@ class MainActivity : AppCompatActivity() {
                     if (splitLine[i] != "") {
                         playSound(this, splitLine[i].toInt())
                         Thread.sleep(700)
+                        //Handler(Looper.getMainLooper()).post(Runnable {
+                      //      playSound(this, splitLine[i].toInt())
+
+                      //  }, )
                     }
                 }
             }
